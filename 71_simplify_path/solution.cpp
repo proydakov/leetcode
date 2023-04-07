@@ -1,7 +1,7 @@
 class Solution final
 {
 public:
-    string simplifyPath(string path)
+    static string simplifyPath(string const& path)
     {
         if (path.front() != '/')
         {
