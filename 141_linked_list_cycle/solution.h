@@ -1,23 +1,30 @@
 #pragma once
 
-class Solution {
+class Solution final
+{
 public:
-    bool hasCycle(ListNode *head) {
-        ListNode* ptr1 = head;
-        ListNode* ptr2 = head;
-        while(ptr1) {
-            ptr1 = ptr1->next;
-            if(ptr1) {
-                ptr1 = ptr1->next;
-            }
-            else {
-                break;
-            }
-            ptr2 = ptr2->next;
-            if(ptr1 == ptr2) {
+    static bool hasCycle(ListNode* head)
+    {
+        if (nullptr == head)
+        {
+            return false;
+        }
+
+        auto p1 = head;
+        auto p2 = head->next;
+
+        while (nullptr != p1 && nullptr != p2)
+        {
+            if (p1 == p2)
+            {
                 return true;
             }
+            p1 = p1->next;
+            p2 = p2->next;
+            p2 = p2 ? p2->next : nullptr;
         }
+
         return false;
     }
 };
+
